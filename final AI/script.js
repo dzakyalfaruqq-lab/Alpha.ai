@@ -8,7 +8,15 @@ let fileContent = "";
 
 function appendMessage(sender, text) {
   const div = document.createElement("div");
-  div.textContent = `${sender}: ${text}`;
+  div.classList.add("message");
+
+  if (sender === "Kamu") {
+    div.classList.add("user"); // chat di kanan
+  } else {
+    div.classList.add("ai"); // chat di kiri
+  }
+
+  div.textContent = `${text}`;
   chatBox.appendChild(div);
   chatBox.scrollTop = chatBox.scrollHeight;
 }
@@ -53,3 +61,4 @@ fileInput.addEventListener("change", () => {
   };
   reader.readAsText(file);
 });
+
